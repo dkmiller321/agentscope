@@ -63,3 +63,50 @@ export interface TokenResponse {
   token_type: string
   user: User
 }
+
+export interface ApiKey {
+  id: string
+  project_id: string
+  key_prefix: string
+  name: string
+  created_at: string
+  revoked_at: string | null
+}
+
+export interface ApiKeyCreateResponse {
+  id: string
+  project_id: string
+  key: string
+  key_prefix: string
+  name: string
+  created_at: string
+}
+
+export interface ProjectStats {
+  total_runs: number
+  failed_runs: number
+  avg_latency_ms: number | null
+  test_pass_rate: number | null
+  recent_runs: number
+}
+
+export interface CreateProjectRequest {
+  name: string
+  description?: string
+}
+
+export interface UpdateProjectRequest {
+  name?: string
+  description?: string
+}
+
+export interface CreateApiKeyRequest {
+  name: string
+}
+
+export interface RunsQueryParams {
+  project_id?: string
+  limit?: number
+  offset?: number
+  status?: string
+}
